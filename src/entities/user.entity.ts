@@ -1,4 +1,5 @@
 import { UserSessionEntity } from 'src/entities/user-session.entity';
+import { Role } from 'src/enums/role.enum';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { VacationEntity } from './vacation.entity';
 
@@ -18,6 +19,16 @@ export class UserEntity {
 
   @Column()
   password: string;
+
+  @Column({ nullable: true })
+  avatar: string;
+
+  @Column({
+    type: 'enum',
+    enum: Role,
+    default: Role.User,
+  })
+  role: Role;
 
   @OneToMany(() => VacationEntity, (vacation) => vacation.user)
   vacations;
