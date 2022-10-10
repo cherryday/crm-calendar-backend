@@ -4,10 +4,10 @@ import { Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 import * as jsonwebtoken from 'jsonwebtoken';
 import { v4 } from 'uuid';
-import { UserEntity } from 'src/users/user.entity';
+import { UserEntity } from 'src/entities/user.entity';
 import { SigninDto } from './dto/signin.dto';
 import { SignupDto } from './dto/signup.dto';
-import { UserSessionEntity } from './user-session.entity';
+import { UserSessionEntity } from '../../entities/user-session.entity';
 import { Request, Response } from 'express';
 
 @Injectable()

@@ -1,5 +1,6 @@
-import { UserSessionEntity } from 'src/auth/user-session.entity';
+import { UserSessionEntity } from 'src/entities/user-session.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { VacationEntity } from './vacation.entity';
 
 @Entity('users')
 export class UserEntity {
@@ -17,6 +18,9 @@ export class UserEntity {
 
   @Column()
   password: string;
+
+  @OneToMany(() => VacationEntity, (vacation) => vacation.user)
+  vacations;
 
   @OneToMany(() => UserSessionEntity, (session) => session.user)
   sessions: UserSessionEntity[];
